@@ -1,25 +1,28 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "manifest_version": 2,
+  "short_name": "Chrome extension",
+  "name": "Chrome extension",
+  "description": "Chrome extension is very cool",
+  "version": "1.0.0",
+  "icons": {
+    "128": "images/logo_128.png"
+  },
+  "background": {
+    "scripts": ["js/scripts/background.js"]
+  },  
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "matches": ["*://*.linkedin.com/in/*"],
+      "js": ["js/scripts/linkedin.js"],
+      "run_at": "document_start"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "page_action": {
+    "default_icon": {
+      "32": "images/logo_32.png",
+      "48": "images/logo_48.png"
+    },
+    "default_title": "Chrome extension",
+    "default_popup": "index.html"
+  }
 }
